@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Inscription</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +17,7 @@
             margin: 0;
         }
 
-        .login-container {
+        .signup-container {
             background: #fff;
             padding: 20px;
             border-radius: 10px;
@@ -30,6 +32,11 @@
 
         .error-message {
             color: red;
+            margin-bottom: 15px;
+        }
+
+        .success-message {
+            color: green;
             margin-bottom: 15px;
         }
 
@@ -49,7 +56,7 @@
             font-size: 14px;
         }
 
-        .login-btn {
+        .signup-btn {
             background-color: #007bff;
             color: white;
             border: none;
@@ -61,32 +68,49 @@
             transition: background 0.3s;
         }
 
-        .login-btn:hover {
+        .signup-btn:hover {
             background-color: #0056b3;
+        }
+
+        .link {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-<div class="login-container">
-    <h2>Connexion</h2>
+<div class="signup-container">
+    <h2>Créer un compte</h2>
 
-    <!-- Affichage du message d'erreur -->
     <script>
         const params = new URLSearchParams(window.location.search);
         if (params.has("error")) {
-            document.write("<p class='error-message'>Identifiants incorrects !</p>");
+            document.write("<p class='error-message'>Nom d'utilisateur déjà utilisé !</p>");
+        } else if (params.has("success")) {
+            document.write("<p class='success-message'>Inscription réussie ! Vous pouvez maintenant vous connecter.</p>");
         }
     </script>
 
-    <form action="LoginServlet" method="post">
+    <form action="SignupServlet" method="post">
         <label for="username">Nom d'utilisateur :</label>
         <input type="text" id="username" name="username" required>
 
         <label for="password">Mot de passe :</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="submit" class="login-btn">Se connecter</button>
+        <p class="link">Déjà un compte ? <a href="index.jsp">Se connecter</a></p>
+
+        <button type="submit" class="signup-btn">S'inscrire</button>
     </form>
 </div>
 
