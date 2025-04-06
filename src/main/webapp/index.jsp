@@ -19,10 +19,9 @@
 
         .login-container {
             background: #fff;
-            padding: 20px;
+            padding: 2%;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            width: 350px;
             text-align: center;
         }
 
